@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 Tribes Introduction</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Hide scrollbars */
+            background-color: #000; /* Black background for better video display */
+        }
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
+            object-fit: cover; /* Maintain aspect ratio and cover the screen */
+        }
+        .button {
+            position: absolute;
+            top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        #unmuteButton {
+            right: 20px; /* Adjust position for single button */
+        }
+    </style>
+</head>
+<body>
+    <video id="myVideo" autoplay muted playsinline>
+        <source src="videos 2/12Tribes_.mov" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <button id="unmuteButton" class="button">Unmute</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('myVideo');
+            const unmuteButton = document.getElementById('unmuteButton');
+            const redirectUrl = 'https://tribe-nft-marketplace.vercel.app/otherPage/propechy'; // Replace with the URL to redirect to
+            // Function to unmute the video
+            unmuteButton.addEventListener('click', () => {
+                video.muted = false;
+                unmuteButton.style.display = 'none'; // Hide button after unmuting
+            });
+
+            // Redirect to another website when the video ends
+            video.addEventListener('ended', () => {
+                window.location.href = redirectUrl;
+            });
+
+            // Handle video playback errors
+            video.addEventListener('error', (e) => {
+                console.error('Video playback error:', e);
+            });
+        });
+    </script>
+</body>
+</html>
